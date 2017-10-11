@@ -28,6 +28,12 @@
 				<target-platform-artifactId>org.eclipse.xtext.latest.target</target-platform-artifactId>
 			</properties>
 		</profile>
+		<profile>
+			<id>useOxygenTarget</id>
+			<properties>
+				<target-platform-artifactId>org.eclipse.xtext.oxygen.target</target-platform-artifactId>
+			</properties>
+		</profile>
 	</profiles>
 	
 	<pluginRepositories>

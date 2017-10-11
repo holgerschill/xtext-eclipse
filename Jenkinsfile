@@ -22,7 +22,7 @@ node {
 	stage('Maven Build (Photon)') {
 		def mvnHome = tool 'M3'
 		wrap([$class:'Xvnc', useXauthority: true]) {
-			sh "${mvnHome}/bin/mvn --batch-mode -fae -Dmaven.test.failure.ignore=true -PuseLatestTarget -Dmaven.repo.local=.m2/repository2 clean install"
+			sh "${mvnHome}/bin/mvn --batch-mode -fae -Dmaven.test.failure.ignore=true -PuseOxygenTarget -Dmaven.repo.local=.m2/repository2 clean install"
 		}
 		step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/*.xml'])
 	}
