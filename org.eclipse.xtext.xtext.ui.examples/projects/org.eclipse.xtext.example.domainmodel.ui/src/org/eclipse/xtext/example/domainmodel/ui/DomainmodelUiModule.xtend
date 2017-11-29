@@ -14,6 +14,7 @@ import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution
 import com.google.inject.Binder
 import com.google.inject.name.Names
+import org.eclipse.xtext.ui.editor.formatting.codebuff.CodebuffContentFormatterFactory
 
 /** 
  * Use this class to register components to be used within the IDE.
@@ -39,4 +40,9 @@ class DomainmodelUiModule extends AbstractDomainmodelUiModule {
 		binder.bind(IOutlineContribution).annotatedWith(Names.named("FilterOperationsContribution")).to(
 			FilterOperationsContribution)
 	}
+	
+	override bindIContentFormatterFactory() {
+		CodebuffContentFormatterFactory
+	}
+	
 }
