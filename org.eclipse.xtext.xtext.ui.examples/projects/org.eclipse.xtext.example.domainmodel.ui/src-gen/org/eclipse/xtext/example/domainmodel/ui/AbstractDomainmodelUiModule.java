@@ -73,7 +73,7 @@ import org.eclipse.xtext.ui.editor.contentassist.antlr.DelegatingContentAssistCo
 import org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler;
 import org.eclipse.xtext.ui.editor.findrefs.ReferenceQueryExecutor;
 import org.eclipse.xtext.ui.editor.formatting.IContentFormatterFactory;
-import org.eclipse.xtext.ui.editor.formatting2.ContentFormatterFactory;
+import org.eclipse.xtext.ui.editor.formatting.codebuff.CodebuffContentFormatterFactory;
 import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.IOutlineTreeStructureProvider;
@@ -222,11 +222,6 @@ public abstract class AbstractDomainmodelUiModule extends DefaultXbaseUiModule {
 		binder.bind(IPreferenceStoreInitializer.class)
 			.annotatedWith(Names.named("builderPreferenceInitializer"))
 			.to(BuilderPreferenceAccess.Initializer.class);
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2
-	public Class<? extends IContentFormatterFactory> bindIContentFormatterFactory() {
-		return ContentFormatterFactory.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.ui.labeling.LabelProviderFragment2
@@ -403,6 +398,11 @@ public abstract class AbstractDomainmodelUiModule extends DefaultXbaseUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.ui.compare.CompareFragment2
 	public void configureCompareViewerTitle(Binder binder) {
 		binder.bind(String.class).annotatedWith(Names.named(UIBindings.COMPARE_VIEWER_TITLE)).toInstance("Domainmodel Compare");
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.CodebuffGrammarGeneratorFragment
+	public Class<? extends IContentFormatterFactory> bindIContentFormatterFactory() {
+		return CodebuffContentFormatterFactory.class;
 	}
 	
 }

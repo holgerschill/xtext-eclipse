@@ -242,4 +242,10 @@ public abstract class AbstractDomainmodelRuntimeModule extends DefaultXbaseRunti
 		return DomainmodelJvmModelInferrer.class;
 	}
 	
+	// contributed by org.eclipse.xtext.xtext.generator.CodebuffGrammarGeneratorFragment
+	public void configureCodeBuff(Binder binder) {
+		binder.bind(String.class).annotatedWith(Names.named("COMMENTRULE")).toInstance("RULE_SL_COMMENT");
+		binder.bind(int.class).annotatedWith(Names.named("INDENT")).toInstance(4);
+	}
+	
 }
